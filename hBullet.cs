@@ -17,13 +17,14 @@ namespace Test2
 		bool garbage = false;
 		Random random = new Random();
 		Vector2 origin;
-
 		//Constructor
-		public hBullet(Sprite2D objSprite, float offset, Behavior behavior = Behavior.bDefault)
+		public hBullet(Sprite2D objSprite, float offset, Vector2 origin, Behavior behavior = Behavior.bDefault)
 		{
 			this.objSprite = objSprite;
 			this.behavior = behavior;
 			this.offset = offset;
+			this.origin = origin;
+			DebugData.numBullets += 1;
 		}
 
 		static public Sprite2D GenerateSpriteSquare1(int number) //generates a sprite for the bullet. Could I do this in the constructor? Yes. But I want to add more of these for more sprites later.
@@ -41,10 +42,16 @@ namespace Test2
 		/// <exception cref="NotImplementedException"></exception>
 		public void Tick()
 		{
+			//GD.Print(garbage);
 			counter++;
 			if (counter <= objSprite.Hframes-1)
 			{
 				objSprite.Frame += 1;
+			}
+			else if (counter >= 1000 || (objSprite.GlobalPosition >= new Vector2(700,800) || (objSprite.GlobalPosition <= new Vector2(-100, -100))))
+			{
+				garbage = true;
+				//objSprite.Skew = 1;
 			}
 			switch (behavior)
 			{
@@ -96,7 +103,7 @@ namespace Test2
 		public float Offset { get => offset; set => offset = value; }
 		public int Counter { get => counter; set => counter = value; }
 		public bool Garbage { get => garbage; set => garbage = value; }
-		internal Behavior Behavior { get => behavior; set => behavior = value; }
+		public Behavior Behavior { get => behavior; set => behavior = value; }
 		public Vector2 Origin { get => origin; set => origin = value; }
 	}
 }

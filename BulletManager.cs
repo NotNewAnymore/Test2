@@ -42,8 +42,9 @@ namespace Test2
 			//}
 			//Count frames since game start.
 			counter++;
+			GD.Print($"Total bullets = {DebugData.numBullets}");
 			//Bullet patterns
-			if (counter <= 600 && counter % 10 == 0)
+			if (counter <= 2400)
 			{
 				BurstPattern1();
 			}
@@ -57,36 +58,64 @@ namespace Test2
 				bullets[i].Tick();
 			}
 		}
-		public void testPattern1()	//Basic test pattern. Fires bullets every 10 degrees.
+		public void testPattern1()	//Basic test pattern. Fires bullets every 10 degrees. Deprecated.
 		{
 			for (int i = 0; i < 360; i += 10)
 			{
-				bullets.Add(new hBullet(hBullet.GenerateSpriteSquare1(bullets.Count), i, Behavior.bRadDefault));
+				bullets.Add(new hBullet(hBullet.GenerateSpriteSquare1(bullets.Count), i,new Vector2(300,300), Behavior.bRadDefault));
 				AddChild(bullets[bullets.Count - 1].ObjSprite);
 			}
 		}
-		public void testPattern2()	//Coordinate test pattern.
+		public void testPattern2()	//Coordinate test pattern. Deprecated.
 		{
 			if (counter % 1 == 0)
 			{
-				bullets.Add(new hBullet(hBullet.GenerateSpriteSquare1(bullets.Count), counter, Behavior.aTest1));
+				bullets.Add(new hBullet(hBullet.GenerateSpriteSquare1(bullets.Count), counter,new Vector2(300,300) , Behavior.aTest1));
 				AddChild(bullets[bullets.Count - 1].ObjSprite);
 			}
 		}
 		public void BurstPattern1()  //Basic test pattern. Fires bullets every 10 degrees.
 		{
-			for (int i = 0; i < 40; i += 10)
+			if (counter % 5 == 0)
 			{
-				lCounter++;
-				bullets.Add(new hBullet(hBullet.GenerateSpriteSquare1(bullets.Count), i + lCounter, Behavior.bRad1));
-				bullets[bullets.Count - 1].Origin = new Vector2(300,150);
-				AddChild(bullets[bullets.Count - 1].ObjSprite);
+				for (int i = 0; i < 40; i += 10)
+				{
+					lCounter += 4;
+					generatebullet(hBullet.GenerateSpriteSquare1(bullets.Count), i + lCounter, Behavior.bRad1, new Vector2(300,300));
+				}
 			}
+		}
+		/// <summary>
+		/// Used to make a bullet. Needs a sprite, offset, behavior, and origin. Also does bullet recycling.
+		/// </summary>
+		/// <param name="objsprite"></param>
+		/// <param name="offset"></param>
+		/// <param name="behavior"></param>
+		/// <param name="origin"></param>
+		public void generatebullet(Sprite2D objsprite, float offset, Behavior behavior, Vector2 origin)
+		{
+			foreach (hBullet i in bullets)
+			{
+				if (i.Garbage)
+				{
+					//i.ObjSprite = objsprite;	//Not a good idea, breaks stuff and even if it did work, would make the whole thing mostly pointless.
+					i.ObjSprite.Texture = objsprite.Texture;
+					i.Offset = offset;
+					i.Behavior = behavior;
+					i.Garbage = false;
+					i.Origin = origin;
+					i.ObjSprite.Frame = 0;
+					i.Counter = 0;
+					return;
+				}
+			}
+			bullets.Add(new hBullet(objsprite, offset, origin, behavior));
+			AddChild(bullets[bullets.Count - 1].ObjSprite);
 		}
 
 	}
 
-	enum Behavior	//Bullet behavior options. Names should corrrespond to bullet behaviors in hBullet.
+	public enum Behavior	//Bullet behavior options. Names should corrrespond to bullet behaviors in hBullet.
 	{
 		bDefault,
 		bRadDefault,
