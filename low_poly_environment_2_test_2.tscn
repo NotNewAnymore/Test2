@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://biadrxv1e1cco"]
+
+[ext_resource type="PackedScene" uid="uid://dlc05s7qvvebh" path="res://Low Poly Environment 2 TEST 2.glb" id="1_a40ah"]
+[ext_resource type="Texture2D" uid="uid://wdocuoo5mktr" path="res://Low Poly Environment 2 TEST 2_Player Bullet 4.png" id="2_a3rmb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12cfn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqpfp"]
+transparency = 1
+albedo_texture = ExtResource("2_a3rmb")
+
+[node name="Low Poly Environment 2 TEST 2" instance=ExtResource("1_a40ah")]
+
+[node name="Pillars 1" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.818009, -0.575205, 0, 0.575205, 0.818009, 0, 4.64838, 0)
+material_override = SubResource("StandardMaterial3D_12cfn")
+
+[node name="Plane001" parent="." index="2"]
+transform = Transform3D(-0.0719407, -0.207713, 0.975541, -0.107184, -0.970801, -0.214608, 0.991633, -0.120002, 0.0475765, 0, 2.17702, 0)
+material_override = SubResource("StandardMaterial3D_lqpfp")

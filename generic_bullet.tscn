@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbban1yd2umec"]
+
+[ext_resource type="Texture2D" uid="uid://wdocuoo5mktr" path="res://Low Poly Environment 2 TEST 2_Player Bullet 4.png" id="1_dt234"]
+[ext_resource type="Script" path="res://GenericBullet.cs" id="2_hh1vw"]
+
+[node name="GenericBullet" type="Sprite2D"]
+position = Vector2(1, 0)
+texture = ExtResource("1_dt234")
+script = ExtResource("2_hh1vw")
