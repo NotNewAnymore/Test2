@@ -1,23 +1,25 @@
 2a60927148abd1d33b818b535e306557
-::res://::1683484784
-all.tscn::PackedScene::7609759859098132591::1683403014::0::1::::<><>::uid://bax4mh7hq54oj<>res://Sprite2D.gd<>uid://c8d57wxpp3dhw<>uid://biadrxv1e1cco<>res://BulletManager.cs<>res://Low Poly Environment 2 TEST 2.gd<>uid://wdocuoo5mktr<>res://GenericBullet.cs
+::res://::1683520904
+all.tscn::PackedScene::7609759859098132591::1683520804::0::1::::<><>::uid://bax4mh7hq54oj<>uid://bsf5du16dylnl<>res://Sprite2D.gd<>uid://c8d57wxpp3dhw<>uid://biadrxv1e1cco<>res://BulletManager.cs<>res://Low Poly Environment 2 TEST 2.gd<>uid://wdocuoo5mktr<>res://GenericBullet.cs
 BDSM Witch Circle Alpha.png::CompressedTexture2D::5420946568123445812::1680725915::1680725915::1::::<><>::
-BulletManager.cs::CSharpScript::-1::1683403061::0::1::::<><>::
+BulletManager.cs::CSharpScript::-1::1683499091::0::1::::<><>::
 CircleBullets.png::CompressedTexture2D::7644835948449781529::1683241865::1683241953::1::::<><>::
 CoordConv.cs::CSharpScript::-1::1683344753::0::1::::<><>::
 DebugData.cs::CSharpScript::-1::1683403061::0::1::::<><>::
 GenericBullet.cs::CSharpScript::-1::1683256922::0::1::::<><>::
 generic_bullet.tscn::PackedScene::4845119206954655082::1683241211::0::1::::<><>::uid://wdocuoo5mktr<>res://GenericBullet.cs
-hBullet.cs::CSharpScript::-1::1683403061::0::1::::<><>::
+hBullet.cs::CSharpScript::-1::1683499089::0::1::::<><>::
 icon.svg::CompressedTexture2D::6795935207661843720::1679621712::1679621717::1::::<><>::
+Jacketeer MT1.png::CompressedTexture2D::3661969717158072769::1683520789::1683520790::1::::<><>::
 Low Poly Environment 2 TEST 2.gd::GDScript::-1::1682126022::0::1::::<>Node3D<>::
 Low Poly Environment 2 TEST 2.glb::PackedScene::7937040580851991217::1679622253::1679622254::1::::<><>::uid://bt2ff2a8hpvvj<>uid://wdocuoo5mktr
 Low Poly Environment 2 TEST 2_Player Bullet 4.png::CompressedTexture2D::1551202375556366655::1679622254::1679622254::1::::<><>::
 Low Poly Environment 2 TEST 2_Stripes.png::CompressedTexture2D::3776060845748478895::1679622254::1679622254::1::::<><>::
-low_poly_environment_2_test_2.tscn::PackedScene::2948145183937679466::1683402843::0::1::::<><>::uid://dlc05s7qvvebh<>uid://wdocuoo5mktr
+low_poly_environment_2_test_2.tscn::PackedScene::2948145183937679466::1683486861::0::1::::<><>::uid://dlc05s7qvvebh<>uid://wdocuoo5mktr
+Player Hitbox 4.png::CompressedTexture2D::4045323940103685033::1683520904::1683520904::1::::<><>::
 Player.cs::CSharpScript::-1::1679622398::0::1::::<><>::
 Player.gd::GDScript::-1::1679622532::0::1::::<>Node2D<>::
-Sprite2D.gd::GDScript::-1::1682135056::0::1::::<>Sprite2D<>::
+Sprite2D.gd::GDScript::-1::1683488654::0::1::::<>Sprite2D<>::
 SquareBullet.png::CompressedTexture2D::8515415890978913406::1683256556::1683256574::1::::<><>::
 STG Player 2C.png::CompressedTexture2D::2435684011791396905::1682134454::1682134454::1::::<><>::
 STG Player 2D.png::CompressedTexture2D::7097146187638286080::1682134454::1682134454::1::::<><>::

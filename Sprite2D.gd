@@ -7,9 +7,9 @@ var animplayer
 func _process(_delta):
 	##animplayer = get_node("AnimationPlayer")
 	if Input.is_action_pressed("Focus"):
-		speed = 5
+		speed = 3
 	else:
-		speed=10
+		speed=8
 		
 	##if Input.is_action_pressed("Fire_1"):
 		

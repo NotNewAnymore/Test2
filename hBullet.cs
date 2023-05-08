@@ -17,13 +17,15 @@ namespace Test2
 		bool garbage = false;
 		Random random = new Random();
 		Vector2 origin;
+		int ttl;
 		//Constructor
-		public hBullet(Sprite2D objSprite, float offset, Vector2 origin, Behavior behavior = Behavior.bDefault)
+		public hBullet(Sprite2D objSprite, float offset, Vector2 origin, int ttl, Behavior behavior = Behavior.bDefault)
 		{
 			this.objSprite = objSprite;
 			this.behavior = behavior;
 			this.offset = offset;
 			this.origin = origin;
+			this.ttl = ttl;
 			DebugData.numBullets += 1;
 		}
 
@@ -48,7 +50,7 @@ namespace Test2
 			{
 				objSprite.Frame += 1;
 			}
-			else if (counter >= 1000 || (objSprite.GlobalPosition >= new Vector2(700,800) || (objSprite.GlobalPosition <= new Vector2(-100, -100))))
+			else if (counter >= ttl)
 			{
 				garbage = true;
 				//objSprite.Skew = 1;
@@ -67,6 +69,9 @@ namespace Test2
 					break;
 				case Behavior.bRad1:
 					bRad1(origin);
+					break;
+				case Behavior.bRad2:
+					bRad2(origin);
 					break;
 				default:
 					throw new NotImplementedException();	//Should never happen.
@@ -88,7 +93,11 @@ namespace Test2
 		/// <param name="origin"></param>
 		public void bRad1(Vector2 origin)
 		{
-			objSprite.GlobalPosition = CoordConv.polarToCart(offset, counter, origin);
+			objSprite.GlobalPosition = CoordConv.polarToCart(offset * 2, counter, origin);
+		}
+		public void bRad2(Vector2 origin)
+		{
+			objSprite.GlobalPosition = CoordConv.polarToCart(offset * 3 + counter / 4f, ((float)Math.Sin((float)counter / 20) * (20)) + ((float)counter / 2), origin);
 		}
 		/// <summary>
 		/// Test behavior. Used to figure out how the coordinate conversion is broken.
@@ -105,5 +114,6 @@ namespace Test2
 		public bool Garbage { get => garbage; set => garbage = value; }
 		public Behavior Behavior { get => behavior; set => behavior = value; }
 		public Vector2 Origin { get => origin; set => origin = value; }
+		public int Ttl { get => ttl; set => ttl = value; }
 	}
 }

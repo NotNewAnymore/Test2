@@ -13,6 +13,7 @@ namespace Test2
 		List<hBullet> bullets = new List<hBullet>();
 		int counter = 0;
 		int lCounter = 0;
+		int zBuffer = 1;
 		public override void _Ready()
 		{
 			//Old testing code
@@ -27,12 +28,16 @@ namespace Test2
 			//bulletInstance.Vframes = 1;
 			//bulletInstance.Frame = 0;   //set the frame in the spritesheet. I can replace the animation system with this. Remember, the sheet starts at 0, not 1.
 			//bulletInstance.GlobalPosition = new Vector2(10, 10); //I can set the coordinates from here. I can compare cooridnates from here. There is no reason to have the bullets "do" anything at all.
-			
-			
+
+			//GD.Print(RenderingServer.CanvasItemZMin);
 			base._Ready();
 		}
 		public override void _Process(double delta)
 		{
+			if (zBuffer >= 2048)
+			{
+				zBuffer = 1;
+			}
 			//base._Process(delta);
 			//bulletInstance.GlobalPosition += new Vector2(0.1f, 0.1f);
 			//bulletInstance.Frame += 1;
@@ -42,11 +47,11 @@ namespace Test2
 			//}
 			//Count frames since game start.
 			counter++;
-			GD.Print($"Total bullets = {DebugData.numBullets}");
+			GD.Print($"Total bullets = {DebugData.numBullets}");		//Prints bullet count!
 			//Bullet patterns
 			if (counter <= 2400)
 			{
-				BurstPattern1();
+				BurstPattern2();
 			}
 
 			tickBullets();
@@ -62,7 +67,7 @@ namespace Test2
 		{
 			for (int i = 0; i < 360; i += 10)
 			{
-				bullets.Add(new hBullet(hBullet.GenerateSpriteSquare1(bullets.Count), i,new Vector2(300,300), Behavior.bRadDefault));
+				bullets.Add(new hBullet(hBullet.GenerateSpriteSquare1(bullets.Count), i,new Vector2(300,300), 1000, Behavior.bRadDefault));
 				AddChild(bullets[bullets.Count - 1].ObjSprite);
 			}
 		}
@@ -70,7 +75,7 @@ namespace Test2
 		{
 			if (counter % 1 == 0)
 			{
-				bullets.Add(new hBullet(hBullet.GenerateSpriteSquare1(bullets.Count), counter,new Vector2(300,300) , Behavior.aTest1));
+				bullets.Add(new hBullet(hBullet.GenerateSpriteSquare1(bullets.Count), counter,new Vector2(300,300), 100, Behavior.aTest1));
 				AddChild(bullets[bullets.Count - 1].ObjSprite);
 			}
 		}
@@ -81,7 +86,23 @@ namespace Test2
 				for (int i = 0; i < 40; i += 10)
 				{
 					lCounter += 4;
-					generatebullet(hBullet.GenerateSpriteSquare1(bullets.Count), i + lCounter, Behavior.bRad1, new Vector2(300,300));
+					generatebullet(hBullet.GenerateSpriteSquare1(bullets.Count), i + lCounter, 900, Behavior.bRad1, new Vector2(300,300));
+				}
+			}
+		}
+		public void BurstPattern2()  //Basic test pattern. Fires bullets every 10 degrees.
+		{
+			if (counter % 5 == 0)
+			{
+				for (int i = 0; i < 10; i += 10)
+				{
+					lCounter += 4;
+					generatebullet(hBullet.GenerateSpriteSquare1(bullets.Count), i + lCounter, 1000, Behavior.bRad2, new Vector2(300, 300));
+				}
+				for (int i = 0; i < 30; i += 10)
+				{
+					lCounter += 1;
+					generatebullet(hBullet.GenerateSpriteSquare1(bullets.Count), i + lCounter * 2, 900, Behavior.bRad1, new Vector2(300, 300));
 				}
 			}
 		}
@@ -92,7 +113,7 @@ namespace Test2
 		/// <param name="offset"></param>
 		/// <param name="behavior"></param>
 		/// <param name="origin"></param>
-		public void generatebullet(Sprite2D objsprite, float offset, Behavior behavior, Vector2 origin)
+		public void generatebullet(Sprite2D objsprite, float offset, int ttl, Behavior behavior, Vector2 origin)
 		{
 			foreach (hBullet i in bullets)
 			{
@@ -106,10 +127,15 @@ namespace Test2
 					i.Origin = origin;
 					i.ObjSprite.Frame = 0;
 					i.Counter = 0;
+					i.Ttl = ttl;
+					i.ObjSprite.ZIndex = zBuffer;
+					zBuffer += 1;
 					return;
 				}
 			}
-			bullets.Add(new hBullet(objsprite, offset, origin, behavior));
+			bullets.Add(new hBullet(objsprite, offset, origin, ttl, behavior));
+			bullets[bullets.Count - 1].ObjSprite.ZIndex = zBuffer;
+			zBuffer += 1;
 			AddChild(bullets[bullets.Count - 1].ObjSprite);
 		}
 
@@ -120,7 +146,7 @@ namespace Test2
 		bDefault,
 		bRadDefault,
 		aTest1,
-		bRad1
+		bRad1,
+		bRad2
 	}
-
 }
