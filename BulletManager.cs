@@ -14,6 +14,7 @@ namespace Test2
 		int counter = 0;
 		int lCounter = 0;
 		int zBuffer = 1;
+
 		public override void _Ready()
 		{
 			//Old testing code
@@ -28,8 +29,10 @@ namespace Test2
 			//bulletInstance.Vframes = 1;
 			//bulletInstance.Frame = 0;   //set the frame in the spritesheet. I can replace the animation system with this. Remember, the sheet starts at 0, not 1.
 			//bulletInstance.GlobalPosition = new Vector2(10, 10); //I can set the coordinates from here. I can compare cooridnates from here. There is no reason to have the bullets "do" anything at all.
-
 			//GD.Print(RenderingServer.CanvasItemZMin);
+
+			//deathSound.
+			//counter = 2500;
 			base._Ready();
 		}
 		public override void _Process(double delta)
@@ -47,13 +50,32 @@ namespace Test2
 			//}
 			//Count frames since game start.
 			counter++;
-			GD.Print($"Total bullets = {DebugData.numBullets}");		//Prints bullet count!
+			//GD.Print($"Total bullets = {DebugData.numBullets}");		//Prints bullet count!
 			//Bullet patterns
-			if (counter <= 2400)
+			if (counter <= 200)
+			{
+
+			}
+			else if (counter <= 1000)
+			{
+				BurstPattern1();
+			}
+			else if (counter <= 1200)
 			{
 				BurstPattern2();
 			}
+			else if (counter <= 2200)
+			{
+				BurstPattern1();
+			}
+			else if (counter <= 2500)
+			{
 
+			}
+			else if (counter <= 4500)
+			{
+				VertPattern1();
+			}
 			tickBullets();
 		}
 		public void tickBullets()	//Called every frame, tells the bullets to move. Why don't I use the built-in function for this? Because I might want to add pausing later.
@@ -106,6 +128,18 @@ namespace Test2
 				}
 			}
 		}
+		public void VertPattern1()
+		{
+			if (counter%30 == 0)
+			{
+				lCounter += 1;
+				for (int i = 0; i < 10; i += 1)
+				{
+					
+					generatebullet(hBullet.GenerateSpriteSquare1(bullets.Count), (lCounter - i) * 40, 900, Behavior.vertPattern1, new Vector2(300, 300));
+				}
+			}
+		}
 		/// <summary>
 		/// Used to make a bullet. Needs a sprite, offset, behavior, and origin. Also does bullet recycling.
 		/// </summary>
@@ -143,10 +177,12 @@ namespace Test2
 
 	public enum Behavior	//Bullet behavior options. Names should corrrespond to bullet behaviors in hBullet.
 	{
+		dead,
 		bDefault,
 		bRadDefault,
 		aTest1,
 		bRad1,
-		bRad2
+		bRad2,
+		vertPattern1
 	}
 }

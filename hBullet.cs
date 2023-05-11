@@ -18,6 +18,8 @@ namespace Test2
 		Random random = new Random();
 		Vector2 origin;
 		int ttl;
+		//Area2D collider;
+		//RectangleShape2D bulletCollision = new RectangleShape2D();
 		//Constructor
 		public hBullet(Sprite2D objSprite, float offset, Vector2 origin, int ttl, Behavior behavior = Behavior.bDefault)
 		{
@@ -26,8 +28,20 @@ namespace Test2
 			this.offset = offset;
 			this.origin = origin;
 			this.ttl = ttl;
+			//collider = new Area2D();
+			//this.objSprite.AddChild(collider);
+			//bulletCollision.Size = new Vector2(14, 14);
+			
+			//collider.ShapeOwnerAddShape(ShapeOwner, bulletCollision);
+			//collider.Monitoring = true;
+			//collider.AreaEntered += Collider_AreaEntered;
 			DebugData.numBullets += 1;
 		}
+
+		//private void Collider_AreaEntered(Area2D area)
+		//{
+		//	throw new NotImplementedException();
+		//}
 
 		static public Sprite2D GenerateSpriteSquare1(int number) //generates a sprite for the bullet. Could I do this in the constructor? Yes. But I want to add more of these for more sprites later.
 		{
@@ -55,8 +69,27 @@ namespace Test2
 				garbage = true;
 				//objSprite.Skew = 1;
 			}
+			else
+			{
+				if (Math.Abs(DebugData.playerPos.DistanceTo(objSprite.GlobalPosition)) <= 8)	//Collision detection. I could not figure out colliders, so here's my solution.
+				{
+					behavior = Behavior.dead;
+				}
+			}
+			//Collision
+			//if ()
+
+			//Behavior
 			switch (behavior)
 			{
+				case Behavior.dead:
+					if (!garbage)
+					{
+						objSprite.GlobalPosition = new Vector2(-200, -200);
+						garbage = true;
+						DebugData.hit = true;
+					}
+					break;
 				case Behavior.bDefault:
 					//GD.Print("bDefault");
 					break;
@@ -72,6 +105,9 @@ namespace Test2
 					break;
 				case Behavior.bRad2:
 					bRad2(origin);
+					break;
+				case Behavior.vertPattern1:
+					vertPattern1();
 					break;
 				default:
 					throw new NotImplementedException();	//Should never happen.
@@ -106,6 +142,10 @@ namespace Test2
 		{
 			Vector2 origin = new Vector2(300f, 350f);
 			objSprite.GlobalPosition = CoordConv.polarToCart(45, counter, origin);
+		}
+		public void vertPattern1()
+		{
+			objSprite.GlobalPosition = new Vector2(((offset - ((float)Math.Sin(counter / 50f)) * 10) % 630f) - 10f, counter);
 		}
 		//Getters and setters
 		public Sprite2D ObjSprite { get => objSprite; set => objSprite = value; }
