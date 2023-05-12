@@ -32,12 +32,12 @@ namespace Test2
 			//GD.Print(RenderingServer.CanvasItemZMin);
 
 			//deathSound.
-			//counter = 2500;
+			//counter = 4500;
 			base._Ready();
 		}
 		public override void _Process(double delta)
 		{
-			if (zBuffer >= 2048)
+			if (zBuffer >= 2048)	//Reset zBuffer when it gets too big
 			{
 				zBuffer = 1;
 			}
@@ -51,6 +51,7 @@ namespace Test2
 			//Count frames since game start.
 			counter++;
 			//GD.Print($"Total bullets = {DebugData.numBullets}");		//Prints bullet count!
+
 			//Bullet patterns
 			if (counter <= 200)
 			{
@@ -74,7 +75,28 @@ namespace Test2
 			}
 			else if (counter <= 4500)
 			{
+				lCounter += 1;
 				VertPattern1();
+				//VertPattern2();
+			}
+			else if (counter <= 5000)
+			{
+				lCounter = 0;
+			}
+			else if(counter <= 7000)
+			{
+				lCounter += 1;
+				BurstPattern3();
+				VertPattern2();
+			}
+			else if(counter <= 8000)
+			{
+				BurstPattern3();
+			}
+			else if (counter <= 10000)
+			{
+				lCounter += (int)(Math.Sin(counter / 40f) * 3);
+				BurstPattern3();
 			}
 			tickBullets();
 		}
@@ -112,7 +134,10 @@ namespace Test2
 				}
 			}
 		}
-		public void BurstPattern2()  //Basic test pattern. Fires bullets every 10 degrees.
+		/// <summary>
+		/// Basic test pattern. Fires bullets every 10 degrees. Also has extremely hard to dodge sine wave bullets.
+		/// </summary>
+		public void BurstPattern2()  
 		{
 			if (counter % 5 == 0)
 			{
@@ -128,15 +153,41 @@ namespace Test2
 				}
 			}
 		}
+		public void BurstPattern3()  //Basic test pattern. Fires bullets every 10 degrees.
+		{
+			if (counter % 10 == 0)
+			{
+				for (int i = 0; i <= 150; i += 30)
+				{
+					generatebullet(hBullet.GenerateSpriteSquare1(bullets.Count), i + (lCounter / 8f), 900, Behavior.bRad2, new Vector2(300, 300));
+				}
+			}
+		}
+		/// <summary>
+		/// Vertically oriented bullet pattern with wavy bullets.
+		/// </summary>
 		public void VertPattern1()
 		{
 			if (counter%30 == 0)
 			{
-				lCounter += 1;
-				for (int i = 0; i < 10; i += 1)
+				for (int i = 0; i < 10; i += 2)
 				{
-					
-					generatebullet(hBullet.GenerateSpriteSquare1(bullets.Count), (lCounter - i) * 40, 900, Behavior.vertPattern1, new Vector2(300, 300));
+					generatebullet(hBullet.GenerateSpriteSquare1(bullets.Count), (lCounter * 1.5f - i) * 40, 900, Behavior.vertPattern1, new Vector2(300, 300));
+					generatebullet(hBullet.GenerateSpriteSquare1(bullets.Count), (lCounter * 1f - i) * 40, 900, Behavior.vertPattern2, new Vector2(300, 300));
+				}
+			}
+		}
+		/// <summary>
+		/// Vertically oriented bullet pattern with wavy bullets.
+		/// </summary>
+		public void VertPattern2()
+		{
+			if (counter % 30 == 0)
+			{
+				for (int i = 0; i < 10; i += 2)
+				{
+
+					generatebullet(hBullet.GenerateSpriteSquare1(bullets.Count), (lCounter * 0.5f - i) * 40, 900, Behavior.vertPattern2, new Vector2(300, 300));
 				}
 			}
 		}
@@ -183,6 +234,7 @@ namespace Test2
 		aTest1,
 		bRad1,
 		bRad2,
-		vertPattern1
+		vertPattern1,
+		vertPattern2
 	}
 }

@@ -1,14 +1,14 @@
 2a60927148abd1d33b818b535e306557
-::res://::1683773681
-all.tscn::PackedScene::7609759859098132591::1683743605::0::1::::<><>::uid://bax4mh7hq54oj<>uid://bsf5du16dylnl<>res://Sprite2D.gd<>uid://c8d57wxpp3dhw<>uid://biadrxv1e1cco<>res://BulletManager.cs<>res://Low Poly Environment 2 TEST 2.gd<>uid://bxvt5n1fs46s8<>res://PlayerHitbox.cs
+::res://::1683846350
+all.tscn::PackedScene::7609759859098132591::1683842375::0::1::::<><>::uid://bax4mh7hq54oj<>uid://bsf5du16dylnl<>res://Sprite2D.gd<>uid://c8d57wxpp3dhw<>uid://biadrxv1e1cco<>res://BulletManager.cs<>res://Low Poly Environment 2 TEST 2.gd<>uid://bxvt5n1fs46s8<>res://PlayerHitbox.cs
 BDSM Witch Circle Alpha.png::CompressedTexture2D::5420946568123445812::1680725915::1680725915::1::::<><>::
-BulletManager.cs::CSharpScript::-1::1683743601::0::1::::<><>::
+BulletManager.cs::CSharpScript::-1::1683842383::0::1::::<><>::
 CircleBullets.png::CompressedTexture2D::7644835948449781529::1683241865::1683241953::1::::<><>::
 CoordConv.cs::CSharpScript::-1::1683344753::0::1::::<><>::
 DebugData.cs::CSharpScript::-1::1683677393::0::1::::<><>::
 GenericBullet.cs::CSharpScript::-1::1683256922::0::1::::<><>::
 generic_bullet.tscn::PackedScene::4845119206954655082::1683241211::0::1::::<><>::uid://wdocuoo5mktr<>res://GenericBullet.cs
-hBullet.cs::CSharpScript::-1::1683743355::0::1::::<><>::
+hBullet.cs::CSharpScript::-1::1683827053::0::1::::<><>::
 Hit.ogg::AudioStreamOggVorbis::9181447286578418471::1683676306::1683676319::1::::<><>::
 icon.svg::CompressedTexture2D::6795935207661843720::1679621712::1679621717::1::::<><>::
 Jacketeer MT1.png::CompressedTexture2D::3661969717158072769::1683520789::1683520790::1::::<><>::

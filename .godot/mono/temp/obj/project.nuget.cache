@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EqpPSnd+AiHtDgFcecrRDvYWVhcVsfj5cLLFT5URveyZIua9P/2UZCenFpwyPN6hJ0nBo5240topqsgE239gfA==",
+  "dgSpecHash": "gSLfBZJn3RZ3uJvO+MWZsoptRkz4O61/KPkAVYiURgmIfkJVdeJBpqwYzY4lZc1Sx4yx4pvnTDTr+HBpU95KzA==",
   "success": true,
-  "projectFilePath": "C:\\USERS\\NOT NEW ANYMORE\\DOCUMENTS\\GODOT STUFF\\TEST2\\Test2.csproj",
+  "projectFilePath": "C:\\Users\\Not New Anymore\\Documents\\Godot Stuff\\Test2\\Test2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Not New Anymore\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder\\godot.sourcegenerators\\4.0.0\\godot.sourcegenerators.4.0.0.nupkg.sha512",
     "C:\\Users\\Not New Anymore\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder\\godotsharp\\4.0.0\\godotsharp.4.0.0.nupkg.sha512",

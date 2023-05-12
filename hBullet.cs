@@ -109,6 +109,9 @@ namespace Test2
 				case Behavior.vertPattern1:
 					vertPattern1();
 					break;
+				case Behavior.vertPattern2:
+					vertPattern2();
+					break;
 				default:
 					throw new NotImplementedException();	//Should never happen.
 					break;
@@ -146,6 +149,10 @@ namespace Test2
 		public void vertPattern1()
 		{
 			objSprite.GlobalPosition = new Vector2(((offset - ((float)Math.Sin(counter / 50f)) * 10) % 630f) - 10f, counter);
+		}
+		public void vertPattern2()
+		{
+			objSprite.GlobalPosition = new Vector2(((offset - ((float)Math.Sin(counter / 50f)) * 10) % 630f) - 10f, 710 - counter);
 		}
 		//Getters and setters
 		public Sprite2D ObjSprite { get => objSprite; set => objSprite = value; }
