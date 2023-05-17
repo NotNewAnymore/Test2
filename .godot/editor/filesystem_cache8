@@ -1,8 +1,8 @@
 2a60927148abd1d33b818b535e306557
-::res://::1683846350
-all.tscn::PackedScene::7609759859098132591::1683842375::0::1::::<><>::uid://bax4mh7hq54oj<>uid://bsf5du16dylnl<>res://Sprite2D.gd<>uid://c8d57wxpp3dhw<>uid://biadrxv1e1cco<>res://BulletManager.cs<>res://Low Poly Environment 2 TEST 2.gd<>uid://bxvt5n1fs46s8<>res://PlayerHitbox.cs
+::res://::1684343508
+all.tscn::PackedScene::7609759859098132591::1684199185::0::1::::<><>::uid://bax4mh7hq54oj<>uid://bsf5du16dylnl<>res://Sprite2D.gd<>uid://c8d57wxpp3dhw<>uid://biadrxv1e1cco<>res://BulletManager.cs<>res://Low Poly Environment 2 TEST 2.gd<>uid://bxvt5n1fs46s8<>res://PlayerHitbox.cs
 BDSM Witch Circle Alpha.png::CompressedTexture2D::5420946568123445812::1680725915::1680725915::1::::<><>::
-BulletManager.cs::CSharpScript::-1::1683842383::0::1::::<><>::
+BulletManager.cs::CSharpScript::-1::1683848136::0::1::::<><>::
 CircleBullets.png::CompressedTexture2D::7644835948449781529::1683241865::1683241953::1::::<><>::
 CoordConv.cs::CSharpScript::-1::1683344753::0::1::::<><>::
 DebugData.cs::CSharpScript::-1::1683677393::0::1::::<><>::
