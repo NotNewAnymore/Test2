@@ -41,6 +41,10 @@ namespace Test2
 			{
 				zBuffer = 1;
 			}
+			if (counter % 60 == 0)
+			{
+				GD.Print($"Current score is {Data.score}");
+			}
 			//base._Process(delta);
 			//bulletInstance.GlobalPosition += new Vector2(0.1f, 0.1f);
 			//bulletInstance.Frame += 1;

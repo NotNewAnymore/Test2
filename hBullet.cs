@@ -18,6 +18,9 @@ namespace Test2
 		Random random = new Random();
 		Vector2 origin;
 		int ttl;
+		int lastGraze;
+		public AudioStreamPlayer graze = new AudioStreamPlayer();
+
 		//Area2D collider;
 		//RectangleShape2D bulletCollision = new RectangleShape2D();
 		//Constructor
@@ -28,14 +31,18 @@ namespace Test2
 			this.offset = offset;
 			this.origin = origin;
 			this.ttl = ttl;
+			lastGraze = 0;
 			//collider = new Area2D();
 			//this.objSprite.AddChild(collider);
 			//bulletCollision.Size = new Vector2(14, 14);
-			
 			//collider.ShapeOwnerAddShape(ShapeOwner, bulletCollision);
 			//collider.Monitoring = true;
 			//collider.AreaEntered += Collider_AreaEntered;
-			DebugData.numBullets += 1;
+			Data.numBullets += 1;
+
+			this.objSprite.AddChild(graze);
+			graze.Stream = ResourceLoader.Load<AudioStreamOggVorbis>("res://Graze1.ogg");
+			graze.VolumeDb -= 10;
 		}
 
 		//private void Collider_AreaEntered(Area2D area)
@@ -71,13 +78,22 @@ namespace Test2
 			}
 			else
 			{
-				if (Math.Abs(DebugData.playerPos.DistanceTo(objSprite.GlobalPosition)) <= 8)	//Collision detection. I could not figure out colliders, so here's my solution.
+				if (Math.Abs(Data.playerPos.DistanceTo(objSprite.GlobalPosition)) <= 8)	//Collision detection. I could not figure out colliders, so here's my solution.
 				{
 					behavior = Behavior.dead;
 				}
 			}
-			//Collision
-			//if ()
+
+			//Graze mechanics
+			if (Math.Abs(Data.playerPos.DistanceTo(objSprite.GlobalPosition)) <= 24 && counter >= lastGraze + 15)
+			{
+				Data.score += 10;
+				lastGraze = counter;
+				graze.Play();
+			}
+
+			
+
 
 			//Behavior
 			switch (behavior)
@@ -87,7 +103,7 @@ namespace Test2
 					{
 						objSprite.GlobalPosition = new Vector2(-200, -200);
 						garbage = true;
-						DebugData.hit = true;
+						Data.hit = true;
 					}
 					break;
 				case Behavior.bDefault:

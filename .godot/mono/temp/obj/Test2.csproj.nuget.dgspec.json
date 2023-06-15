@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Not New Anymore\\Documents\\Godot Stuff\\Test2\\Test2.csproj": {}
+    "C:\\USERS\\NOT NEW ANYMORE\\DOCUMENTS\\GODOT STUFF\\TEST2\\Test2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Not New Anymore\\Documents\\Godot Stuff\\Test2\\Test2.csproj": {
+    "C:\\USERS\\NOT NEW ANYMORE\\DOCUMENTS\\GODOT STUFF\\TEST2\\Test2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Not New Anymore\\Documents\\Godot Stuff\\Test2\\Test2.csproj",
+        "projectUniqueName": "C:\\USERS\\NOT NEW ANYMORE\\DOCUMENTS\\GODOT STUFF\\TEST2\\Test2.csproj",
         "projectName": "Test2",
-        "projectPath": "C:\\Users\\Not New Anymore\\Documents\\Godot Stuff\\Test2\\Test2.csproj",
+        "projectPath": "C:\\USERS\\NOT NEW ANYMORE\\DOCUMENTS\\GODOT STUFF\\TEST2\\Test2.csproj",
         "packagesPath": "C:\\Users\\Not New Anymore\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Not New Anymore\\Documents\\Godot Stuff\\Test2\\.godot\\mono\\temp\\obj\\",
+        "outputPath": "C:\\USERS\\NOT NEW ANYMORE\\DOCUMENTS\\GODOT STUFF\\TEST2\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Users\\Not New Anymore\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
@@ -28,7 +28,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {}
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -48,15 +49,15 @@
           "dependencies": {
             "Godot.SourceGenerators": {
               "target": "Package",
-              "version": "[4.0.0, )"
+              "version": "[4.0.3, )"
             },
             "GodotSharp": {
               "target": "Package",
-              "version": "[4.0.0, )"
+              "version": "[4.0.3, )"
             },
             "GodotSharpEditor": {
               "target": "Package",
-              "version": "[4.0.0, )"
+              "version": "[4.0.3, )"
             }
           },
           "imports": [

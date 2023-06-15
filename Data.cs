@@ -7,12 +7,13 @@ using Godot;
 
 namespace Test2
 {
-	static public class DebugData
+	static public class Data
 	{
 		static public int numBullets = 0;
 		static public Vector2 playerPos= new Vector2(0,0);
 		static public int lives = 5;
 		static public int iFrames = 0;
 		static public bool hit = false;
+		static public double score = 0;
 	}
 }

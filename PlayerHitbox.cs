@@ -13,25 +13,25 @@ namespace Test2 {
 		}
 		public override void _Process(double delta)
 		{
-			DebugData.playerPos = GlobalPosition;
+			Data.playerPos = GlobalPosition;
 			//GD.Print(DebugData.playerPos);
 			base._Process(delta);
-			if (DebugData.iFrames > 0)
+			if (Data.iFrames > 0)
 			{
-				DebugData.iFrames--;
+				Data.iFrames--;
 			}
-			if (DebugData.hit && DebugData.iFrames == 0)
+			if (Data.hit && Data.iFrames == 0)
 			{
-				DebugData.lives -= 1;
-				DebugData.iFrames = 60;
-				DebugData.hit = false;
-				GD.Print($"Hit! Lost a life! Remaining Lives: {DebugData.lives}");
+				Data.lives -= 1;
+				Data.iFrames = 60;
+				Data.hit = false;
+				GD.Print($"Hit! Lost a life! Remaining Lives: {Data.lives}");
 				deathSound.Play(0f);
 				
 			}
-			else if (DebugData.hit && DebugData.iFrames != 0)
+			else if (Data.hit && Data.iFrames != 0)
 			{
-				DebugData.hit = false;
+				Data.hit = false;
 				//GD.Print("Hit! Iframes saved you!");
 			}
 		}
