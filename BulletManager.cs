@@ -45,13 +45,6 @@ namespace Test2
 			{
 				GD.Print($"Current score is {Data.score}");
 			}
-			//base._Process(delta);
-			//bulletInstance.GlobalPosition += new Vector2(0.1f, 0.1f);
-			//bulletInstance.Frame += 1;
-			//if (bulletInstance.Frame == 29)
-			//{
-			//	bulletInstance.Frame = 0;
-			//}
 			//Count frames since game start.
 			counter++;
 			//GD.Print($"Total bullets = {DebugData.numBullets}");		//Prints bullet count!
@@ -81,7 +74,6 @@ namespace Test2
 			{
 				lCounter += 1;
 				VertPattern1();
-				//VertPattern2();
 			}
 			else if (counter <= 5000)
 			{

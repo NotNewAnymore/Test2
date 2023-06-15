@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\USERS\\NOT NEW ANYMORE\\DOCUMENTS\\GODOT STUFF\\TEST2\\Test2.csproj": {}
+    "C:\\Users\\Not New Anymore\\Documents\\Godot Stuff\\Test2\\Test2.csproj": {}
   },
   "projects": {
-    "C:\\USERS\\NOT NEW ANYMORE\\DOCUMENTS\\GODOT STUFF\\TEST2\\Test2.csproj": {
+    "C:\\Users\\Not New Anymore\\Documents\\Godot Stuff\\Test2\\Test2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\USERS\\NOT NEW ANYMORE\\DOCUMENTS\\GODOT STUFF\\TEST2\\Test2.csproj",
+        "projectUniqueName": "C:\\Users\\Not New Anymore\\Documents\\Godot Stuff\\Test2\\Test2.csproj",
         "projectName": "Test2",
-        "projectPath": "C:\\USERS\\NOT NEW ANYMORE\\DOCUMENTS\\GODOT STUFF\\TEST2\\Test2.csproj",
+        "projectPath": "C:\\Users\\Not New Anymore\\Documents\\Godot Stuff\\Test2\\Test2.csproj",
         "packagesPath": "C:\\Users\\Not New Anymore\\.nuget\\packages\\",
-        "outputPath": "C:\\USERS\\NOT NEW ANYMORE\\DOCUMENTS\\GODOT STUFF\\TEST2\\.godot\\mono\\temp\\obj\\",
+        "outputPath": "C:\\Users\\Not New Anymore\\Documents\\Godot Stuff\\Test2\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Users\\Not New Anymore\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",

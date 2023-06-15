@@ -21,8 +21,6 @@ namespace Test2
 		int lastGraze;
 		public AudioStreamPlayer graze = new AudioStreamPlayer();
 
-		//Area2D collider;
-		//RectangleShape2D bulletCollision = new RectangleShape2D();
 		//Constructor
 		public hBullet(Sprite2D objSprite, float offset, Vector2 origin, int ttl, Behavior behavior = Behavior.bDefault)
 		{
@@ -32,12 +30,6 @@ namespace Test2
 			this.origin = origin;
 			this.ttl = ttl;
 			lastGraze = 0;
-			//collider = new Area2D();
-			//this.objSprite.AddChild(collider);
-			//bulletCollision.Size = new Vector2(14, 14);
-			//collider.ShapeOwnerAddShape(ShapeOwner, bulletCollision);
-			//collider.Monitoring = true;
-			//collider.AreaEntered += Collider_AreaEntered;
 			Data.numBullets += 1;
 
 			this.objSprite.AddChild(graze);
@@ -45,10 +37,6 @@ namespace Test2
 			graze.VolumeDb -= 10;
 		}
 
-		//private void Collider_AreaEntered(Area2D area)
-		//{
-		//	throw new NotImplementedException();
-		//}
 
 		static public Sprite2D GenerateSpriteSquare1(int number) //generates a sprite for the bullet. Could I do this in the constructor? Yes. But I want to add more of these for more sprites later.
 		{
@@ -65,7 +53,6 @@ namespace Test2
 		/// <exception cref="NotImplementedException"></exception>
 		public void Tick()
 		{
-			//GD.Print(garbage);
 			counter++;
 			if (counter <= objSprite.Hframes-1)
 			{
@@ -74,7 +61,6 @@ namespace Test2
 			else if (counter >= ttl)
 			{
 				garbage = true;
-				//objSprite.Skew = 1;
 			}
 			else
 			{
