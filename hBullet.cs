@@ -116,7 +116,7 @@ namespace Test2
 					break;
 				default:
 					throw new NotImplementedException();	//Should never happen.
-					break;
+					//break;
 			}
 		}
 
