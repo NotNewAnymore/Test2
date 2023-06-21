@@ -1,14 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://dgohvr3s7i88j"]
+[gd_scene load_steps=17 format=3 uid="uid://dgohvr3s7i88j"]
 
 [ext_resource type="Texture2D" uid="uid://bax4mh7hq54oj" path="res://STG Player 2C.png" id="1_iuknn"]
 [ext_resource type="Texture2D" uid="uid://bsf5du16dylnl" path="res://Jacketeer MT1.png" id="1_rcbif"]
 [ext_resource type="Script" path="res://Sprite2D.gd" id="2_fjgwi"]
 [ext_resource type="Texture2D" uid="uid://c8d57wxpp3dhw" path="res://STG Player 2D.png" id="3_dk1ql"]
-[ext_resource type="PackedScene" uid="uid://biadrxv1e1cco" path="res://low_poly_environment_2_test_2.tscn" id="3_mkcbh"]
 [ext_resource type="Script" path="res://BulletManager.cs" id="4_7omvc"]
-[ext_resource type="Script" path="res://Low Poly Environment 2 TEST 2.gd" id="4_rwt04"]
 [ext_resource type="Texture2D" uid="uid://bxvt5n1fs46s8" path="res://Player Hitbox 4.png" id="5_kbf0d"]
 [ext_resource type="Script" path="res://PlayerHitbox.cs" id="6_31y13"]
+[ext_resource type="Texture2D" uid="uid://cotxlsmogvh0n" path="res://SHMUP Infobar.png" id="8_4qvgk"]
+[ext_resource type="PackedScene" uid="uid://c6c45jgwa20b5" path="res://Mega Ship 4.glb" id="8_h33ya"]
+[ext_resource type="Script" path="res://Labels.cs" id="9_1pbhg"]
+[ext_resource type="Script" path="res://MegaShip4.cs" id="9_8pid7"]
 
 [sub_resource type="Animation" id="Animation_1s6fc"]
 resource_name = "Player_1"
@@ -34,6 +36,13 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgyr3"]
 size = Vector2(4, 4)
+
+[sub_resource type="SystemFont" id="SystemFont_0bpi2"]
+
+[sub_resource type="Theme" id="Theme_n0nji"]
+default_font_size = 30
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/fonts/font = SubResource("SystemFont_0bpi2")
 
 [node name="All" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.1822, -16.629, 3.91633)
@@ -67,6 +76,21 @@ shape = SubResource("RectangleShape2D_qgyr3")
 position = Vector2(201, 182)
 script = ExtResource("4_7omvc")
 
+[node name="Label" type="Label" parent="Game layer/BulletManager"]
+z_index = 3500
+offset_left = 445.0
+offset_top = -150.0
+offset_right = 604.0
+offset_bottom = -100.0
+theme = SubResource("Theme_n0nji")
+text = "Test"
+script = ExtResource("9_1pbhg")
+
+[node name="ShmupInfobar" type="Sprite2D" parent="Game layer"]
+z_index = 3000
+position = Vector2(750, 350)
+texture = ExtResource("8_4qvgk")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 34.2637, 50, -3.95832)
 v_offset = 10.0
@@ -74,6 +98,6 @@ v_offset = 10.0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.867592, 0.400929, 0.294178, -0.497277, 0.699495, 0.513247, 0, -0.591577, 0.806248, 99.8288, 127.951, -127.536)
 
-[node name="Low Poly Environment 2 TEST 2" parent="." instance=ExtResource("3_mkcbh")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 34.0351, 0, -38.0569)
-script = ExtResource("4_rwt04")
+[node name="Mega Ship 4" parent="." instance=ExtResource("8_h33ya")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37.6015, -141.45, -109.268)
+script = ExtResource("9_8pid7")

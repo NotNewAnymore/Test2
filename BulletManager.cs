@@ -1,38 +1,36 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using static Godot.Projection;
+using System.Globalization;
+using System.IO;
+using System.Linq;
 
 namespace Test2
 {
 	public partial class BulletManager : Node2D
 	{
-		//delegate void ShootEventHandler(PackedScene bullet, Vector2 direction, Vector2 location);
-		//private PackedScene _bullet = GD.Load<PackedScene>("res://generic_bullet.tscn");
-		//Sprite2D bulletInstance;	//Bullets used for figuring out how to spawn objects.
-		//Sprite2D secondBullet;
 		List<hBullet> bullets = new List<hBullet>();
 		int counter = 0;
 		int lCounter = 0;
 		int zBuffer = 1;
+		bool saved = false;
+		
 
 		public override void _Ready()
 		{
 			//Old testing code
-			////GD.Print("Test");
-			////EmitSignal(SignalName.Shoot, _bullet, Rotation, Position);
-			//bulletInstance = GetNode<Sprite2D>("OtherBullet");
-			//bulletInstance.Name = "newBullet";
-			//GD.Print(bulletInstance.GetScript());
-			////AddChild(bulletInstance);
-			//bulletInstance.Texture = ResourceLoader.Load<Texture2D>("res://SquareBullet.png"); //I can set the image used by the bullet from here.
-			//bulletInstance.Hframes = 30;    //set up the spritesheet
-			//bulletInstance.Vframes = 1;
-			//bulletInstance.Frame = 0;   //set the frame in the spritesheet. I can replace the animation system with this. Remember, the sheet starts at 0, not 1.
-			//bulletInstance.GlobalPosition = new Vector2(10, 10); //I can set the coordinates from here. I can compare cooridnates from here. There is no reason to have the bullets "do" anything at all.
-			//GD.Print(RenderingServer.CanvasItemZMin);
-
-			//deathSound.
+			
 			//counter = 4500;
+
+			if (Godot.FileAccess.FileExists("test.save"))
+			{
+				using var saveGame = Godot.FileAccess.Open("test.save", Godot.FileAccess.ModeFlags.Read);
+				GD.Print("File exists!");
+				Data.highscore = (int)saveGame.Get32();
+				
+			}
+
 			base._Ready();
 		}
 		public override void _Process(double delta)
@@ -48,11 +46,16 @@ namespace Test2
 			//Count frames since game start.
 			counter++;
 			//GD.Print($"Total bullets = {DebugData.numBullets}");		//Prints bullet count!
-
+			//GD.Print($"Total TickingObjects = {Data.tickingObjects.Count}");
+			//GD.Print(delta);
 			//Bullet patterns
+			if (Data.score > Data.highscore)
+			{
+				Data.highscore = Data.score;
+			}
 			if (counter <= 200)
 			{
-
+				testPattern1();
 			}
 			else if (counter <= 1000)
 			{
@@ -79,23 +82,66 @@ namespace Test2
 			{
 				lCounter = 0;
 			}
-			else if(counter <= 7000)
+			else if (counter <= 7000)       //Tentacle and hail of bullets
 			{
 				lCounter += 1;
 				BurstPattern3();
 				VertPattern2();
 			}
-			else if(counter <= 8000)
+			else if (counter <= 8000)       //See above, but without the hail
 			{
 				BurstPattern3();
 			}
-			else if (counter <= 10000)
+			else if (counter <= 10000)      //Wavy tentacle of bullets
 			{
 				lCounter += (int)(Math.Sin(counter / 40f) * 3);
 				BurstPattern3();
 			}
+			if (!saved && counter >= 2000)	//Save game
+			{	
+				using var saveGame = Godot.FileAccess.Open("test.save", Godot.FileAccess.ModeFlags.Write);	//Set up saveGame to write to test.save
+				saveGame.Store32((uint)Data.highscore);		//Save a score. Saved as a 32-bit unsigned integer at the start of test.save. Other scores will remain in the file.
+				GD.Print("Saved game");
+				saved = true;
+			}
+
 			tickBullets();
+			ticktickingObjects(delta);
 		}
+
+		public void defaultBullet(float offset, int ttl, Vector2 origin)
+		{
+			BaseBullet bullet = new BaseBullet(offset, origin, ttl);
+			bullet.ObjSprite.ZIndex = zBuffer;
+			zBuffer++;
+			AddChild(bullet.ObjSprite);
+		}
+
+		public void ticktickingObjects(double delta)   //Called every frame, tells the bullets to move. Why don't I use the built-in function for this? Because I might want to add pausing later.
+		{
+
+
+			for (int i = 0; i < Data.tickingObjects.Count; i++)
+			{
+				if (Data.tickingObjects[i].Garbage())
+				{
+					Data.tickingObjects.RemoveAt(i);
+				}
+			}
+			for (int i = 0; i < Data.collidingObjects.Count; i++)
+			{
+				if (Data.collidingObjects[i].Garbage())
+				{
+					Data.collidingObjects.RemoveAt(i);
+				}
+			}
+
+			for (int i = 0; i < Data.tickingObjects.Count; i++)
+			{
+				Data.tickingObjects[i].Tick(delta);
+			}
+		}
+
 		public void tickBullets()	//Called every frame, tells the bullets to move. Why don't I use the built-in function for this? Because I might want to add pausing later.
 		{
 			for (int i = 0; i < bullets.Count; i++)
@@ -105,10 +151,11 @@ namespace Test2
 		}
 		public void testPattern1()	//Basic test pattern. Fires bullets every 10 degrees. Deprecated.
 		{
-			for (int i = 0; i < 360; i += 10)
+			if (counter % 20 == 0)
 			{
-				bullets.Add(new hBullet(hBullet.GenerateSpriteSquare1(bullets.Count), i,new Vector2(300,300), 1000, Behavior.bRadDefault));
-				AddChild(bullets[bullets.Count - 1].ObjSprite);
+				defaultBullet(0, 500, new Vector2(300, 300));
+				//bullets.Add(new hBullet(hBullet.GenerateSpriteSquare1(bullets.Count), i,new Vector2(300,300), 1000, Behavior.bRadDefault));
+				//AddChild(bullets[bullets.Count - 1].ObjSprite);
 			}
 		}
 		public void testPattern2()	//Coordinate test pattern. Deprecated.

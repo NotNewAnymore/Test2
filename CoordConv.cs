@@ -35,5 +35,10 @@ namespace Test2
 			result += offset;
 			return result;
 		}
+
+		static internal float RadtoDeg(float r)
+		{
+			return r / (float)(180 / Math.PI);
+		}
 	}
 }

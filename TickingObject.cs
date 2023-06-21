@@ -8,6 +8,7 @@ namespace Test2
 {
 	internal interface TickingObject
 	{
-		public void Tick();
+		public void Tick(double delta);
+		public bool Garbage();
 	}
 }
