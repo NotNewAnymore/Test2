@@ -11,11 +11,16 @@ namespace Test2
 		}
 
 		// Called every frame. 'delta' is the elapsed time since the previous frame.
-		public override void _Process(double delta)
+		public override void _Process(double delta)		//Score and lives panel.
 		{
 			this.Text = $"Score = {Data.score}\n" +
 				$"Lives = {Data.lives}\n" +
-				$"Highscore = {Data.highscore}";
+				$"Highscore = {Data.highscore}\n" +
+				$"Scoreboard:";
+			for (int i = 0; i < Data.scores.Count && i<10; i++)		//Display the list of scores.
+			{
+				this.Text += $"\n{Data.scores[i]}";
+			}
 		}
 	}
 }

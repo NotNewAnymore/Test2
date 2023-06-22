@@ -15,9 +15,10 @@ namespace Test2
 		static public int lives = 5;
 		static public int iFrames = 0;
 		static public bool hit = false;	//Determines if the player is touching a bullet.
-		static public int score = 0;
+		static public uint score = 0;
 		static internal List<TickingObject> tickingObjects = new List<TickingObject>();	//Lists all ticking objects controlled by the bullet manager.
 		static internal List<CollidingObject> collidingObjects = new List<CollidingObject>();   //Lists all objects that can hit things.
-		static internal int highscore;
+		static internal uint highscore;
+		static internal List<uint> scores = new List<uint>();
 	}
 }

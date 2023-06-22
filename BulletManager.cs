@@ -23,11 +23,33 @@ namespace Test2
 			
 			//counter = 4500;
 
-			if (Godot.FileAccess.FileExists("test.save"))
+			if (Godot.FileAccess.FileExists("test.save"))	//Open save if it exists
 			{
-				using var saveGame = Godot.FileAccess.Open("test.save", Godot.FileAccess.ModeFlags.Read);
+				using var saveGame = Godot.FileAccess.Open("test.save", Godot.FileAccess.ModeFlags.Read);	//Load save into memory as a string
 				GD.Print("File exists!");
-				Data.highscore = (int)saveGame.Get32();
+				//Data.highscore = saveGame.Get32();
+				uint dataIn = 1;	//Stores input data. 
+				int datcounter = 0;		//Makes sure the whole file is loaded, even if there is an all zero byte in it somewhere. Should not be neccesary, but it was not working without this.
+				while (dataIn != 0 && datcounter <=5)
+				{
+					dataIn = saveGame.Get32();	//Load a byte from SaveGame.
+					if (dataIn != 0)	//If the byte is not zero, add it to the scoreboard.
+					{
+						Data.scores.Add(dataIn);
+						GD.Print(dataIn);
+						datcounter = 0;
+					}
+					else     //If the byte is zero, print Null Score to the console and increase datcounter by 1.
+					{
+						GD.Print("Null score");
+						datcounter += 1;
+					}
+
+				}
+				Data.scores.Sort();		//Sort the scores the wrong way
+				Data.scores.Reverse();	//Fix the score sorting
+				Data.highscore = Data.scores[0];	//Set the highscore to the largest score.
+				
 				
 			}
 
@@ -39,10 +61,10 @@ namespace Test2
 			{
 				zBuffer = 1;
 			}
-			if (counter % 60 == 0)
-			{
-				GD.Print($"Current score is {Data.score}");
-			}
+			//if (counter % 60 == 0)
+			//{
+			//	GD.Print($"Current score is {Data.score}");
+			//}
 			//Count frames since game start.
 			counter++;
 			//GD.Print($"Total bullets = {DebugData.numBullets}");		//Prints bullet count!
@@ -97,10 +119,19 @@ namespace Test2
 				lCounter += (int)(Math.Sin(counter / 40f) * 3);
 				BurstPattern3();
 			}
-			if (!saved && counter >= 2000)	//Save game
-			{	
-				using var saveGame = Godot.FileAccess.Open("test.save", Godot.FileAccess.ModeFlags.Write);	//Set up saveGame to write to test.save
-				saveGame.Store32((uint)Data.highscore);		//Save a score. Saved as a 32-bit unsigned integer at the start of test.save. Other scores will remain in the file.
+			if (!saved && counter >= 10000 || Data.lives <= 0 && !saved)	//Save game
+			{
+				Data.scores.Add(Data.score);
+				using var saveGame = Godot.FileAccess.Open("test.save", Godot.FileAccess.ModeFlags.Write);  //Set up saveGame to write to test.save
+				//saveGame.Store32((uint)Data.highscore);		//Save a score. Saved as a 32-bit unsigned integer at the start of test.save.
+				foreach (uint item in Data.scores) //Save all scores.
+				{
+					if (item != 0)
+					{
+						saveGame.Store32(item);		//Scores are saved as 32 bit bytes. Godot didn't like CSV helper, and it's built in save features are mostly for saving gamestates, so I had to do this.
+					}
+
+				}
 				GD.Print("Saved game");
 				saved = true;
 			}
