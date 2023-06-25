@@ -20,5 +20,8 @@ namespace Test2
 		static internal List<CollidingObject> collidingObjects = new List<CollidingObject>();   //Lists all objects that can hit things.
 		static internal uint highscore;
 		static internal List<uint> scores = new List<uint>();
+		static internal string name;
+		static public LineEdit nameEntry;
+		static internal List<Playerdata> playerdata = new List<Playerdata>();
 	}
 }

@@ -17,9 +17,9 @@ namespace Test2
 				$"Lives = {Data.lives}\n" +
 				$"Highscore = {Data.highscore}\n" +
 				$"Scoreboard:";
-			for (int i = 0; i < Data.scores.Count && i<10; i++)		//Display the list of scores.
+			for (int i = 0; i < Data.playerdata.Count && i<10; i++)		//Display the list of scores.
 			{
-				this.Text += $"\n{Data.scores[i]}";
+				this.Text += $"\n{Data.playerdata[i]}";
 			}
 		}
 	}

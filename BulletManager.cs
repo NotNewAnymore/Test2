@@ -28,30 +28,59 @@ namespace Test2
 				using var saveGame = Godot.FileAccess.Open("test.save", Godot.FileAccess.ModeFlags.Read);	//Load save into memory as a string
 				GD.Print("File exists!");
 				//Data.highscore = saveGame.Get32();
-				uint dataIn = 1;	//Stores input data. 
-				int datcounter = 0;		//Makes sure the whole file is loaded, even if there is an all zero byte in it somewhere. Should not be neccesary, but it was not working without this.
-				while (dataIn != 0 && datcounter <=5)
+				uint dataIn = 1;    //Stores input data. 
+				string stringIn = "";
+				int datcounter = 0;     //Makes sure the whole file is loaded, even if there is an all zero byte in it somewhere. Should not be neccesary, but it was not working without this.
+
+				while (dataIn != 0 && datcounter <= 5)
 				{
-					dataIn = saveGame.Get32();	//Load a byte from SaveGame.
-					if (dataIn != 0)	//If the byte is not zero, add it to the scoreboard.
+					dataIn = saveGame.Get32();  //Load a byte from SaveGame.
+					if (dataIn != 0)    //If the byte is not zero, add it to the scoreboard.
 					{
-						Data.scores.Add(dataIn);
-						GD.Print(dataIn);
-						datcounter = 0;
+						for (int i = 0; i < 3; i++)
+						{
+							stringIn += (char)saveGame.Get16();
+						}
+						Playerdata pDIn = new Playerdata(dataIn, stringIn);
+						Data.playerdata.Add(pDIn);
+						stringIn = "";
+						GD.Print(pDIn);
+						//Data.scores.Add(dataIn);
+						//GD.Print(dataIn);
+						//datcounter = 0;
 					}
 					else     //If the byte is zero, print Null Score to the console and increase datcounter by 1.
 					{
 						GD.Print("Null score");
 						datcounter += 1;
 					}
+				}
+
+				Data.playerdata.Sort();
+				Data.highscore = Data.playerdata[0].Score;
+
+					//while (dataIn != 0 && datcounter <=5)
+					//{
+					//	dataIn = saveGame.Get32();	//Load a byte from SaveGame.
+					//	if (dataIn != 0)	//If the byte is not zero, add it to the scoreboard.
+					//	{
+					//		Data.scores.Add(dataIn);
+					//		GD.Print(dataIn);
+					//		datcounter = 0;
+					//	}
+					//	else     //If the byte is zero, print Null Score to the console and increase datcounter by 1.
+					//	{
+					//		GD.Print("Null score");
+					//		datcounter += 1;
+					//	}
+
+					//}
+					//Data.scores.Sort();		//Sort the scores the wrong way
+					//Data.scores.Reverse();	//Fix the score sorting
+					//Data.highscore = Data.scores[0];	//Set the highscore to the largest score.
+
 
 				}
-				Data.scores.Sort();		//Sort the scores the wrong way
-				Data.scores.Reverse();	//Fix the score sorting
-				Data.highscore = Data.scores[0];	//Set the highscore to the largest score.
-				
-				
-			}
 
 			base._Ready();
 		}
@@ -121,24 +150,55 @@ namespace Test2
 			}
 			if (!saved && counter >= 10000 || Data.lives <= 0 && !saved)	//Save game
 			{
-				Data.scores.Add(Data.score);
-				using var saveGame = Godot.FileAccess.Open("test.save", Godot.FileAccess.ModeFlags.Write);  //Set up saveGame to write to test.save
-				//saveGame.Store32((uint)Data.highscore);		//Save a score. Saved as a 32-bit unsigned integer at the start of test.save.
-				foreach (uint item in Data.scores) //Save all scores.
+				counter = 200000;   //Stop bullet spawning.
+				if (Data.nameEntry == null)		//Get player's name.
 				{
-					if (item != 0)
+					Data.nameEntry = new LineEdit();
+					this.AddChild(Data.nameEntry);
+					Data.nameEntry.GlobalPosition = new Vector2(300, 300);
+					Data.nameEntry.Name = "name entry";
+					Data.nameEntry.Text = "";
+					Data.nameEntry.MaxLength = 3;
+					GD.Print($"Position of nameEntry is:{Data.nameEntry.GlobalPosition}.");
+				}
+				if (Data.nameEntry.Text.Length == Data.nameEntry.MaxLength)		//if the player has filled out their name, save the game.
+				{
+					//Data.scores.Add(Data.score);
+					Data.playerdata.Add(new Playerdata(Data.score,Data.nameEntry.Text));
+					GD.Print(Data.playerdata[0]);
+					using var saveGame = Godot.FileAccess.Open("test.save", Godot.FileAccess.ModeFlags.Write);  //Set up saveGame to write to test.save
+
+					foreach (Playerdata item in Data.playerdata)
 					{
-						saveGame.Store32(item);		//Scores are saved as 32 bit bytes. Godot didn't like CSV helper, and it's built in save features are mostly for saving gamestates, so I had to do this.
+						saveGame.Store32(item.Score);
+						for (int i = 0; i < 3; i++)
+						{
+							saveGame.Store16(item.Name[i]);
+						}
 					}
 
+					
+					//saveGame.Store32((uint)Data.highscore);		//Save a score. Saved as a 32-bit unsigned integer at the start of test.save.
+					//foreach (uint item in Data.scores) //Save all scores.
+					//{
+					//	if (item != 0)
+					//	{
+					//		saveGame.Store32(item);     //Scores are saved as 32 bit bytes. Godot didn't like CSV helper, and it's built in save features are mostly for saving gamestates, so I had to do this.
+					//	}
+
+					//}
+					GD.Print("Saved game");
+					saved = true;
 				}
-				GD.Print("Saved game");
-				saved = true;
+
+				
 			}
 
 			tickBullets();
 			ticktickingObjects(delta);
 		}
+
+
 
 		public void defaultBullet(float offset, int ttl, Vector2 origin)
 		{
