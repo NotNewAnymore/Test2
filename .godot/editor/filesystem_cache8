@@ -1,14 +1,14 @@
 2a60927148abd1d33b818b535e306557
-::res://::1687721231
-all.tscn::PackedScene::7609759859098132591::1687459059::0::1::::<><>::uid://bax4mh7hq54oj<>uid://bsf5du16dylnl<>res://Sprite2D.gd<>uid://c8d57wxpp3dhw<>res://BulletManager.cs<>uid://bxvt5n1fs46s8<>res://PlayerHitbox.cs<>uid://cotxlsmogvh0n<>uid://c6c45jgwa20b5<>res://Labels.cs<>res://MegaShip4.cs
+::res://::1687732194
+all.tscn::PackedScene::7609759859098132591::1687732044::0::1::::<><>::uid://bax4mh7hq54oj<>uid://bsf5du16dylnl<>res://Sprite2D.gd<>uid://c8d57wxpp3dhw<>res://BulletManager.cs<>uid://bxvt5n1fs46s8<>res://PlayerHitbox.cs<>uid://cotxlsmogvh0n<>uid://c6c45jgwa20b5<>res://Labels.cs<>res://MegaShip4.cs
 BaseBullet.cs::CSharpScript::-1::1687458346::0::1::::<><>::
 BDSM Witch Circle Alpha.png::CompressedTexture2D::5420946568123445812::1680725915::1680725915::1::::<><>::
-BulletManager.cs::CSharpScript::-1::1687459055::0::1::::<><>::
+BulletManager.cs::CSharpScript::-1::1687729292::0::1::::<><>::
 BulletRemover.cs::CSharpScript::-1::1687458346::0::1::::<><>::
 CircleBullets.png::CompressedTexture2D::7644835948449781529::1683241865::1683241953::1::::<><>::
 CollidingObject.cs::CSharpScript::-1::1687458346::0::1::::<><>::
 CoordConv.cs::CSharpScript::-1::1687458346::0::1::::<><>::
-Data.cs::CSharpScript::-1::1687458346::0::1::::<><>::
+Data.cs::CSharpScript::-1::1687729292::0::1::::<><>::
 GenericBullet.cs::CSharpScript::-1::1683256922::0::1::::<><>::
 generic_bullet.tscn::PackedScene::4845119206954655082::1683241211::0::1::::<><>::uid://wdocuoo5mktr<>res://GenericBullet.cs
 Graze1.ogg::AudioStreamOggVorbis::4733662678098906794::1686797102::1686797102::1::::<><>::
@@ -16,7 +16,7 @@ hBullet.cs::CSharpScript::-1::1687458347::0::1::::<><>::
 Hit.ogg::AudioStreamOggVorbis::9181447286578418471::1686797102::1686797102::1::::<><>::
 icon.svg::CompressedTexture2D::6795935207661843720::1679621712::1679621717::1::::<><>::
 Jacketeer MT1.png::CompressedTexture2D::3661969717158072769::1686797102::1686797102::1::::<><>::
-Labels.cs::CSharpScript::-1::1687458346::0::1::::<><>::
+Labels.cs::CSharpScript::-1::1687729292::0::1::::<><>::
 Low Poly Environment 2 TEST 2.gd::GDScript::-1::1682126022::0::1::::<>Node3D<>::
 Low Poly Environment 2 TEST 2.glb::PackedScene::7937040580851991217::1679622253::1679622254::1::::<><>::uid://bt2ff2a8hpvvj<>uid://wdocuoo5mktr
 Low Poly Environment 2 TEST 2_Player Bullet 4.png::CompressedTexture2D::1551202375556366655::1679622254::1679622254::1::::<><>::
@@ -32,6 +32,7 @@ MegaShip4.cs::CSharpScript::-1::1687458347::0::1::::<><>::
 Player Hitbox 4.png::CompressedTexture2D::4045323940103685033::1686797102::1686797102::1::::<><>::
 Player.cs::CSharpScript::-1::1679622398::0::1::::<><>::
 Player.gd::GDScript::-1::1679622532::0::1::::<>Node2D<>::
+Playerdata.cs::CSharpScript::-1::1687732041::0::1::::<><>::
 PlayerHitbox.cs::CSharpScript::-1::1686797102::0::1::::<><>::
 SHMUP Infobar.png::CompressedTexture2D::5796125454815277635::1687458347::1687458347::1::::<><>::
 Sprite2D.gd::GDScript::-1::1686797102::0::1::::<>Sprite2D<>::
