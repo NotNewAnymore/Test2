@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4X3DyTZkvrhOIN650yVRPEBjqfG3s108tQZ0Zs/ibSYu3vemZ7T/5O0aS38RaVmZtuzWlIXmxyJZSylngEMjeQ==",
+  "dgSpecHash": "rJBjaeEkhBQy+rCT7gnWxumV9OxKrR+n67GW2ZiybbLAPJOkaFKELBAdDErPswbQVGYiFGJgesUYqWftsm8gqQ==",
   "success": true,
-  "projectFilePath": "C:\\USERS\\NOT NEW ANYMORE\\DOCUMENTS\\GODOT STUFF\\TEST2\\Test2.csproj",
+  "projectFilePath": "C:\\Users\\Not New Anymore\\Documents\\Godot Stuff\\Test2\\Test2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Not New Anymore\\.nuget\\packages\\csvhelper\\30.0.1\\csvhelper.30.0.1.nupkg.sha512",
     "C:\\Users\\Not New Anymore\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder\\godot.sourcegenerators\\4.0.3\\godot.sourcegenerators.4.0.3.nupkg.sha512",
