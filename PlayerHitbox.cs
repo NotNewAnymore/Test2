@@ -26,7 +26,7 @@ namespace Test2 {
 			shootDir = Input.GetVector("Wleft", "Wright", "Wup", "Wdown");  //Input handling for weapons
 			shootDeg = (float)Math.Abs((CoordConv.CartToDeg(shootDir)));
 			Data.option.Frame = (int)shootDeg;
-			GD.Print($"{shootDeg}");
+			//GD.Print($"{shootDeg}");
 			base._Process(delta);
 			if (Data.iFrames > 0)
 			{
