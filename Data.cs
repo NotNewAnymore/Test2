@@ -23,5 +23,6 @@ namespace Test2
 		static internal string name;
 		static public LineEdit nameEntry;
 		static internal List<Playerdata> playerdata = new List<Playerdata>();
+		static public Sprite2D option = new Sprite2D();
 	}
 }

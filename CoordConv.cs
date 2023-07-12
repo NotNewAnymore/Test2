@@ -38,7 +38,26 @@ namespace Test2
 
 		static internal float RadtoDeg(float r)
 		{
-			return r / (float)(180 / Math.PI);
+			return r * (float)(180 / Math.PI);
+		}
+		static internal float CartToDeg(Vector2 coordinates)
+		{
+			//r = r / (float)(180 / Math.PI); //I do not understand why this fixes the co-ordinates. But trial and error shows me that it does. Mostly, I assume. I only need it to be accurate to 1 pixel @ 360 degrees, it probably drifts after that.
+			//								//Ok I asked Zot. The function was written for Radians. The website said it was for degrees... Zot says the Sin and Cos functions in C# appear to be set up for radians.
+			float t;
+			float r;
+			//Convert between polar and cartesian coordinates
+			//A^2 + B^2 = C^2. I forgot trig. Time to keep look it up.
+			//x = t * (float)Math.Cos(r);
+			//y = t * (float)Math.Sin(r);
+			//GD.Print(r);
+			r = (float)Math.Atan2(coordinates.Y,coordinates.X);
+			r = ((RadtoDeg(r) * -1 + 180) + 90)  % 360;
+			if (coordinates.X + coordinates.Y == 0)
+			{
+				r = 0;
+			}
+			return r;
 		}
 	}
 }
