@@ -7,6 +7,7 @@ namespace Test2 {
 		public AudioStreamPlayer deathSound = new AudioStreamPlayer();
 		Vector2 shootDir = new Vector2();
 		float shootDeg = 0;
+		int counter = 0;
 
 		public override void _Ready()
 		{
@@ -21,11 +22,21 @@ namespace Test2 {
 		public override void _Process(double delta)
 		{
 			Data.playerPos = GlobalPosition;
+			counter++;
 			//Data.option.GlobalPosition = Data.playerPos;
 			//GD.Print(DebugData.playerPos);
+
+			//Weapon stuff
 			shootDir = Input.GetVector("Wleft", "Wright", "Wup", "Wdown");  //Input handling for weapons
 			shootDeg = (float)Math.Abs((CoordConv.CartToDeg(shootDir)));
 			Data.option.Frame = (int)shootDeg;
+			if (shootDir != new Vector2(0,0) && counter % 8 == 0)
+			{
+				GD.Print("Bang!");
+				Data.bulletManager.PlayerBullet((shootDeg * -1) -90,1000,GlobalPosition);
+			}
+
+
 			//GD.Print($"{shootDeg}");
 			base._Process(delta);
 			if (Data.iFrames > 0)

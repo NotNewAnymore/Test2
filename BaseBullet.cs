@@ -11,11 +11,11 @@ namespace Test2
 	{
 		//Basic variables
 		Sprite2D objSprite;
-		float offset;
-		int counter = 0;
+		protected float offset;
+		protected int counter = 0;
 		bool garbage = false;
 		Random random = new Random();
-		Vector2 origin;
+		protected Vector2 origin;
 		int ttl;
 		int lastGraze;
 		public AudioStreamPlayer graze = new AudioStreamPlayer();
@@ -86,12 +86,12 @@ namespace Test2
 				objSprite.Frame += 1;
 			}
 		}
-		public void Behavior()
+		public virtual void Behavior()
 		{
 			objSprite.GlobalPosition = origin;  //Stationary behavior
 		}
 
-		public void Strike()
+		public virtual void Strike()
 		{
 			if (Math.Abs(Data.playerPos.DistanceTo(objSprite.GlobalPosition)) <= 8) //Collision detection. I could not figure out colliders, so here's my solution.
 			{
@@ -101,7 +101,7 @@ namespace Test2
 			}
 		}
 
-		public void Graze()
+		public virtual void Graze()
 		{
 			if (Math.Abs(Data.playerPos.DistanceTo(objSprite.GlobalPosition)) <= 24 && counter >= lastGraze + 15)
 			{

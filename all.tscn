@@ -95,9 +95,6 @@ texture = ExtResource("8_4qvgk")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 34.2637, 50, -3.95832)
 v_offset = 10.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.867592, 0.400929, 0.294178, -0.497277, 0.699495, 0.513247, 0, -0.591577, 0.806248, 99.8288, 127.951, -127.536)
-
 [node name="Mega Ship 4" parent="." instance=ExtResource("8_h33ya")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37.6015, -141.45, -109.268)
 script = ExtResource("9_8pid7")

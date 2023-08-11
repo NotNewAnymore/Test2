@@ -15,12 +15,13 @@ namespace Test2
 		int lCounter = 0;
 		int zBuffer = 1;
 		bool saved = false;
-		
+		Random rng = new Random(0);
 
 		public override void _Ready()
 		{
+			Data.bulletManager = this;
 			//Old testing code
-			
+
 			//counter = 4500;
 
 			if (Godot.FileAccess.FileExists("test.save"))	//Open save if it exists
@@ -86,6 +87,7 @@ namespace Test2
 		}
 		public override void _Process(double delta)
 		{
+			Data.random = rng.Next(-255,255);
 			if (zBuffer >= 2048)	//Reset zBuffer when it gets too big
 			{
 				zBuffer = 1;
@@ -203,6 +205,17 @@ namespace Test2
 		public void defaultBullet(float offset, int ttl, Vector2 origin)
 		{
 			BaseBullet bullet = new BaseBullet(offset, origin, ttl);
+			bullet.ObjSprite.ZIndex = zBuffer;
+			zBuffer++;
+			AddChild(bullet.ObjSprite);
+		}
+		//public static void FirePlayerBullet(float offset, int ttl, Vector2 origin)
+		//{
+		//	PlayerBullet(offset,ttl,origin);
+		//}
+		public void PlayerBullet(float offset, int ttl, Vector2 origin)
+		{
+			PlayerBullet bullet = new PlayerBullet(offset, origin, ttl);
 			bullet.ObjSprite.ZIndex = zBuffer;
 			zBuffer++;
 			AddChild(bullet.ObjSprite);

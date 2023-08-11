@@ -1,14 +1,14 @@
 2a60927148abd1d33b818b535e306557
-::res://::1689143525
-all.tscn::PackedScene::7609759859098132591::1689123516::0::1::::<><>::uid://bax4mh7hq54oj<>uid://bsf5du16dylnl<>res://Player.cs<>uid://c8d57wxpp3dhw<>res://BulletManager.cs<>uid://bxvt5n1fs46s8<>res://PlayerHitbox.cs<>uid://cotxlsmogvh0n<>uid://c6c45jgwa20b5<>res://Labels.cs<>res://MegaShip4.cs
-BaseBullet.cs::CSharpScript::-1::1687458346::0::1::::<><>::
+::res://::1690421972
+all.tscn::PackedScene::7609759859098132591::1690070569::0::1::::<><>::uid://bax4mh7hq54oj<>uid://bsf5du16dylnl<>res://Player.cs<>uid://c8d57wxpp3dhw<>res://BulletManager.cs<>uid://bxvt5n1fs46s8<>res://PlayerHitbox.cs<>uid://cotxlsmogvh0n<>uid://c6c45jgwa20b5<>res://Labels.cs<>res://MegaShip4.cs
+BaseBullet.cs::CSharpScript::-1::1690070557::0::1::::<><>::
 BDSM Witch Circle Alpha.png::CompressedTexture2D::5420946568123445812::1680725915::1680725915::1::::<><>::
-BulletManager.cs::CSharpScript::-1::1687729292::0::1::::<><>::
+BulletManager.cs::CSharpScript::-1::1690065689::0::1::::<><>::
 BulletRemover.cs::CSharpScript::-1::1687458346::0::1::::<><>::
 CircleBullets.png::CompressedTexture2D::7644835948449781529::1683241865::1683241953::1::::<><>::
 CollidingObject.cs::CSharpScript::-1::1687458346::0::1::::<><>::
-CoordConv.cs::CSharpScript::-1::1687458346::0::1::::<><>::
-Data.cs::CSharpScript::-1::1687729292::0::1::::<><>::
+CoordConv.cs::CSharpScript::-1::1689189207::0::1::::<><>::
+Data.cs::CSharpScript::-1::1690065604::0::1::::<><>::
 GenericBullet.cs::CSharpScript::-1::1683256922::0::1::::<><>::
 generic_bullet.tscn::PackedScene::4845119206954655082::1683241211::0::1::::<><>::uid://wdocuoo5mktr<>res://GenericBullet.cs
 Graze1.ogg::AudioStreamOggVorbis::4733662678098906794::1686797102::1686797102::1::::<><>::
@@ -29,12 +29,13 @@ Mega Ship 4_RadpanAndShields.png::CompressedTexture2D::6135608951371172523::1687
 Mega Ship 4_Reactor and Main Engine.png::CompressedTexture2D::3701698346519250963::1687458347::1687458347::1::::<><>::
 Mega Ship 4_Tanks and Hab.png::CompressedTexture2D::8901706544200805024::1687458347::1687458347::1::::<><>::
 MegaShip4.cs::CSharpScript::-1::1687458347::0::1::::<><>::
-Options Test.png::CompressedTexture2D::3370458414535124832::1689143525::1689143528::1::::<><>::
+Options Test.png::CompressedTexture2D::3370458414535124832::1689189640::1689189643::1::::<><>::
 Player Hitbox 4.png::CompressedTexture2D::4045323940103685033::1686797102::1686797102::1::::<><>::
 Player.cs::CSharpScript::-1::1689128839::0::1::::<><>::
 Player.gd::GDScript::-1::1679622532::0::1::::<>Node2D<>::
+PlayerBullet.cs::CSharpScript::-1::1689999231::0::1::::<><>::
 Playerdata.cs::CSharpScript::-1::1687732041::0::1::::<><>::
-PlayerHitbox.cs::CSharpScript::-1::1686797102::0::1::::<><>::
+PlayerHitbox.cs::CSharpScript::-1::1690065610::0::1::::<><>::
 SHMUP Infobar.png::CompressedTexture2D::5796125454815277635::1687458347::1687458347::1::::<><>::
 Sprite2D.gd::GDScript::-1::1686797102::0::1::::<>Sprite2D<>::
 SquareBullet.png::CompressedTexture2D::8515415890978913406::1683256556::1683256574::1::::<><>::
